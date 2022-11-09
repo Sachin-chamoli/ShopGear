@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FilterSection from "./component/FilterSection";
 import ProductList from "./component/ProductList";
 import Sort from "./component/Sort";
 import { useFilterContext } from "./context/filter_context";
@@ -12,7 +13,7 @@ const Products = () => {
     <Wrapper>
       <div className="container grid grid-filter-column">
         <div>
-          {/* <FilterSection /> */}
+          <FilterSection />
         </div>
 
         <section className="product-view--sort">
