@@ -4,12 +4,65 @@ import { useFilterContext } from "../context/filter_context";
 
 
 const FilterSection = () =>{
-    const { filters :{ text}, updateFilterValue} = useFilterContext();
+    const { filters :{ text, category}, updateFilterValue, all_products} = useFilterContext();
+
+    // to get the unique data of each filed 
+    const getUniqueData = (data, property) =>{
+      let newVal = data.map((curElem) =>{
+        return  curElem[property]
+      });
+      if(property === "colors"){
+        // return (newVal = ["all" , ...new Set([].concat(...newVal))]);
+        newVal = newVal.flat();
+      }
+      
+        return (newVal = ["all" , ...new Set(newVal)]);
+      
+    }
+    // We need unique data 
+    const categoryOnlyData =  getUniqueData(all_products, "category");
+    const companyData =  getUniqueData(all_products, "company");
+    const colorsData = getUniqueData(all_products, "colors");
+    console.log(colorsData);
+
     return <Wrapper>
         <div className="filter-search">
             <form onSubmit={(e)=> e.preventDefault()}>
-                <input type="text" name="text" value={text} onChange={updateFilterValue}/>
+                <input type="text" name="text" value={text} onChange={updateFilterValue} placeholder="Search"/>
             </form>
+        </div>
+
+        <div className="filter-category">
+          <h3>Category</h3>
+          <div>
+            {
+              categoryOnlyData.map((curElem, index)=>{
+                return <button 
+                name="category"
+                type="button"
+                key={index}
+                value={curElem}
+                onClick={updateFilterValue}>
+                  {curElem}
+                </button>
+              })
+            }
+          </div>
+        </div>
+
+        <div className="filter-company">
+          <h3>Comapany</h3>
+          <form action="#">
+            <select name="company" id="company" className="filter-company--select" onClick={updateFilterValue}>
+              {
+                companyData.map((curElem, index) =>{
+                  return (
+                    <option value={curElem} name="company" key={index}>{curElem}</option>
+                  )
+                })
+              }
+            </select>
+          </form>
         </div>
     </Wrapper>
 }

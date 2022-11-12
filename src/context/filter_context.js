@@ -12,8 +12,11 @@ const initialState = {
     grid_view : false,
     sorting_value : "lowest",
     filters : {
-        text : ""
-    }
+        text : "",
+        category : "all",
+        company : "all",
+        color : "all",
+    },
 }
 
 export const FilterContextProvider = ({children}) =>{
