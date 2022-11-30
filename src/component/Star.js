@@ -7,7 +7,7 @@ const Star = ({stars, reviews}) => {
     
     const ratingStar = Array.from({length : 5}, (elem, index) => {
         let number = index +0.5;
-        debugger;
+        // debugger;
         return (
             // index = 0 / 1/2/3/4
             <span key ={index}>
