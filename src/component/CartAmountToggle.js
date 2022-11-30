@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 
-const CartAmountToggle = ({amount, setDecrease, setInscrease}) => {
+const CartAmountToggle = ({amount, setDecrease, setIncrease}) => {
   return (
     <div className='cart-button'>
       <div className="amount-toggle">
@@ -9,7 +9,7 @@ const CartAmountToggle = ({amount, setDecrease, setInscrease}) => {
             <FaMinus/>
         </button>
         <div className="amount-style">{amount}</div>
-        <button onClick={() => setInscrease()}>
+        <button onClick={() => setIncrease()}>
             <FaPlus/>
         </button>
       </div>
