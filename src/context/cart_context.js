@@ -20,7 +20,7 @@ const CartProvider = ({children}) =>{
         cart : getLocalCartData(),
         total_item : "",
         total_price : "",
-        shipping_fee : 50000,
+        shipping_fee : 5000,
     }
     const [state, dispatch] = useReducer(reducer, initialState);
     const addToCart = (id, color, amount, product) =>{
@@ -47,8 +47,9 @@ const CartProvider = ({children}) =>{
 
     // to add the data in local storage 
     useEffect(() =>{
-        dispatch({type : "CART_TOTAL_ITEM"});
+        // dispatch({type : "CART_TOTAL_ITEM"});
         // dispatch({ type : "CART_TOTAL_PRICE"});
+        dispatch({type : "CART_ITEM_PRICE_TOTAL"});
         localStorage.setItem("ShopCart", JSON.stringify(state.cart))
     }, [state.cart])
 
